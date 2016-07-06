@@ -8,22 +8,29 @@
 (defn purchases-html [purchases]
   [:html
    [:body
-    [:a {:href "/"} "All"]
-    " "
-    [:a {:href "/Food"} "Food"]
-    [:a {:href "/Alcohol"} "Alcohol"]
-    [:a {:href "/Toiletries"} "Toiletries"]
-    [:a {:href "/Furniture"} "Furniture"]
-    [:a {:href "/Shoes"} "Shoes"]
-    [:a {:href "/Jewelry"} "Jewelry"]
-    [:ol
-     (map (fn [purchase]
-            [:li (str (get purchase "customer_id") " "
-                   (get purchase "date") " " 
-                   (get purchase "credit_card") " " 
-                   (get purchase "cvv") " "
-                   (get purchase "category"))])
-       purchases)]]])
+    [:div {:align "center"}
+     [:a {:href "/"} "All"]
+     " "
+     [:a {:href "/Food"} "Food"]
+     " "
+     [:a {:href "/Alcohol"} "Alcohol"]
+     " "
+     [:a {:href "/Toiletries"} "Toiletries"]
+     " "
+     [:a {:href "/Furniture"} "Furniture"]
+     " "
+     [:a {:href "/Shoes"} "Shoes"]
+     " "
+     [:a {:href "/Jewelry"} "Jewelry"]
+     [:br]
+     [:ol
+      (map (fn [purchase]
+             [:br (str (get purchase "customer_id") " || "
+                    (get purchase "date") " || "
+                    (get purchase "credit_card") " || " 
+                    (get purchase "cvv") " || "
+                    (get purchase "category"))])
+        purchases)]]]])
 
 (defn filter-by-category [purchases category]
   (filter (fn [purchase]
